@@ -3,6 +3,7 @@ version: '3.8'
 services:
   mysqldb:
     image: mysql:5.7
+    platform: linux/amd64
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -17,7 +18,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: ./bezkoder-app
+    build: ./
     restart: unless-stopped
     env_file: .env
     ports:
