@@ -1,0 +1,36 @@
+[
+    {
+      "id": 1,
+      "capacity": 2,
+      "pcname": "PC1",
+      "hardwareid": "HW123",
+      "storage": "500GB SSD",
+      "longitude": -122.4194,
+      "latitude": 37.7749,
+      "bandwidth": "1 Gbps",
+      "GPU_total": 2,
+      "gpu_name": "NVIDIA GeForce GTX 1080",
+      "Rammemory": "16GB DDR4",
+      "cpu": "Intel Core i7-9700K",
+      "created_at": "2024-03-14T10:00:00Z",
+      "updated_at": "2024-03-14T12:30:00Z",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "capacity": 1,
+      "pcname": "PC2",
+      "hardwareid": "HW456",
+      "storage": "1TB HDD",
+      "longitude": -73.935242,
+      "latitude": 40.73061,
+      "bandwidth": "500 Mbps",
+      "GPU_total": 1,
+      "gpu_name": "AMD Radeon RX 580",
+      "Rammemory": "8GB DDR4",
+      "cpu": "AMD Ryzen 5 3600",
+      "created_at": "2024-03-14T09:45:00Z",
+      "updated_at": "2024-03-14T11:20:00Z",
+      "status": "Inactive"
+    }
+  ]

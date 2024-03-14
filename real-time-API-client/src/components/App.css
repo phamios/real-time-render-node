@@ -1,0 +1,13 @@
+.app {
+    display: flex;
+  }
+  
+  .sidebar {
+    /* Add styles for your sidebar */
+    flex: 0 0 auto; /* Sidebar won't grow or shrink */
+  }
+  
+  .leaflet {
+    /* Add styles for your Leaflet map */
+    flex: 1 auto; /* Leaflet map will take remaining space */
+  }
