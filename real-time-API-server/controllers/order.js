@@ -1,6 +1,8 @@
 import express from 'express'
 import Order from '../models/order'
 import {io} from '../index' 
+const dbConfig = require("../config/db.js");
+
 
 const router = express.Router()
 
