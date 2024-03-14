@@ -1,5 +1,5 @@
 import React from 'react'
-import Orders from './Orders'
+// import Orders from './Orders'
 import '../index.css'
 import Leaflet from './Leaflet'
 import Navbar from "./Navbar"
