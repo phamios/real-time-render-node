@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from "react";
-import WorkerOverview from "./WorkerOverview";
+// import WorkerOverview from "./WorkerOverview";
+import WorkerList from "../data/WorkerList.json";
 
 const SideBar = () => {
+  const sideBarStyle = {
+    color: "bg-sky-50",
+    backgroundColor: "rgb(37, 150, 190)",
+    padding: "10px",
+    fontFamily: "Arial",
+  };
   const [workerList, setWorkerList] = useState([]);
   const [totalNode, setTotalNode] = useState(0);
   const [totalCapacity, setTotalCapacity] = useState(0);
 
   useEffect(() => {
-    fetch("../data/WorkerList.json")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setWorkerList(data);
-        calculateTotals(data);
-      })
-      .catch((error) => console.log(error));
+    // Function to load data from JSON
+    const loadData = () => JSON.parse(JSON.stringify(WorkerList));
+
+    // Load data and set worker list
+    const Data = loadData();
+    setWorkerList(Data);
+    console.log(Data);
+
+    // Calculate totals
+    calculateTotals(Data);
   }, []);
 
   const calculateTotals = (data) => {
-    let totalNodeCount = 0;
+    let totalNodeCount = 1;
     let totalCapacityCount = 0;
 
     data.forEach((worker) => {
@@ -38,23 +42,29 @@ const SideBar = () => {
   };
 
   const workerOverviews = workerList.map((worker) => (
-    <WorkerOverview
-      key={worker.id}
-      PCname={worker.pcname}
-      capacity={worker.capacity}
-    />
+    <tr key={worker.id}>
+      <td>{worker.pcname}</td>
+      <td>{worker.capacity}</td>
+    </tr>
   ));
 
   return (
     <>
-      <span>
-        <h4>Total Nodes: {totalNode}</h4>
-      </span>{" "}
-      <span>
-        <h4>Serving capacity: {totalCapacity}</h4>
-      </span>
-      <br />
-      {workerOverviews}
+      <div id="sideBar" style={sideBarStyle}>
+        <table className="table-responsive">
+          <thead>
+            <th>Total nodes</th>
+            <th>Serving capacity</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{totalNode}</td>
+              <td>{totalCapacity}</td>
+            </tr>
+            {workerOverviews}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

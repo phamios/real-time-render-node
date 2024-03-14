@@ -1,13 +1,9 @@
 .app {
-    display: flex;
-  }
-  
-  .sidebar {
-    /* Add styles for your sidebar */
-    flex: 0 0 auto; /* Sidebar won't grow or shrink */
-  }
-  
-  .leaflet {
-    /* Add styles for your Leaflet map */
-    flex: 1 auto; /* Leaflet map will take remaining space */
-  }
+  display: flex;
+  flex-direction: column;
+}
+.main-content {
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  grid-template-rows: auto 1fr;
+}
