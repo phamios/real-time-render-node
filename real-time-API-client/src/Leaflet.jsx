@@ -1,11 +1,11 @@
 import L from "leaflet"
 import React from "react";
-import { TileLayer } from "react-leaflet";
+import { Map, TileLayer } from "react-leaflet";
 import MarkerCluster from "./Cluster";
 
 const position = [51.505, -0.09];
 const mapStyle = { height: "90vh" };
-var Map = L.map('map');
+// var Map = L.map('map');
 
 const Leaflet = () => {
     let markers;

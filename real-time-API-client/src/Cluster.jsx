@@ -1,49 +1,44 @@
 import { useEffect } from "react";
 import * as L from "leaflet";
 import { useLeaflet } from "react-leaflet";
-import 'leaflet.markercluster'
+import "leaflet.markercluster";
+import "leaflet.markercluster/dist/leaflet.markercluster";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
-const markerClusters = L.markerClusterGroup();
-const customIcon = L.icon({
-    iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
-    iconSize: [25, 41]
-});
 
 const MarkerCluster = ({ markers, addMarkers }) => {
-    const { map } = useLeaflet();
-    useEffect(() => {
-        markerClusters.clearLayers();
-        markers.forEach(({ position }) =>
-        L.marker(new L.LatLng(position.lat, position.lng), {
-            icon: customIcon
-        }).addTo(markerClusters)
-        );
+  const { map } = useLeaflet();
 
-        map.addLayer(markerClusters);
-    }, [markers, map]);
+  useEffect(() => {
+    const markerClusters = L.markerClusterGroup(); // Create marker cluster group inside useEffect
+    map.addLayer(markerClusters); // Add marker cluster group to the map
 
-    map.on("moveend", () => {
-        // const start = window.performance.now();
+    // Add markers to the marker cluster group
+    markers.forEach(({ position }) =>
+      L.marker(new L.LatLng(position.lat, position.lng)).addTo(markerClusters)
+    );
 
-        addMarkers();
-        const markersToAdd = [];
-        markerClusters.clearLayers();
-        markers.forEach(({ position }) => {
-            const markerToAdd = L.marker(new L.LatLng(position.lat, position.lng), {
-                icon: customIcon,
-            });
+    // Cleanup function to remove the marker cluster group when component unmounts
+    return () => {
+      map.removeLayer(markerClusters);
+    };
+  }, [markers, map]);
 
-            if (markerToAdd !== undefined) {
-                markersToAdd.push(markerToAdd);
-            }
-        })
+  useEffect(() => {
+    const handleMoveEnd = () => {
+      addMarkers();
+    };
 
-        markerClusters.addLayer(markersToAdd);
-        // const end = window.performance.now();
-    })
+    map.on("moveend", handleMoveEnd);
 
-    return null;
+    // Cleanup function to remove event listener when component unmounts
+    return () => {
+      map.off("moveend", handleMoveEnd);
+    };
+  }, [map, addMarkers]);
 
-}
+  return null;
+};
 
 export default MarkerCluster;
