@@ -1,33 +1,21 @@
 import React, { useEffect, useState } from "react";
-// import WorkerOverview from "./WorkerOverview";
 import WorkerList from "../data/WorkerList.json";
+import DropDown from "./DropDown";
 
-const SideBar = () => {
-  const sideBarStyle = {
-    color: "bg-sky-50",
-    backgroundColor: "rgb(37, 150, 190)",
-    padding: "10px",
-    fontFamily: "Arial",
-  };
+const SideBar = ({ changeToLocation }) => {
   const [workerList, setWorkerList] = useState([]);
   const [totalNode, setTotalNode] = useState(0);
   const [totalCapacity, setTotalCapacity] = useState(0);
 
   useEffect(() => {
-    // Function to load data from JSON
     const loadData = () => JSON.parse(JSON.stringify(WorkerList));
-
-    // Load data and set worker list
-    const Data = loadData();
-    setWorkerList(Data);
-    console.log(Data);
-
-    // Calculate totals
-    calculateTotals(Data);
+    const data = loadData();
+    setWorkerList(data);
+    calculateTotals(data);
   }, []);
 
   const calculateTotals = (data) => {
-    let totalNodeCount = 1;
+    let totalNodeCount = 0;
     let totalCapacityCount = 0;
 
     data.forEach((worker) => {
@@ -41,31 +29,32 @@ const SideBar = () => {
     setTotalCapacity(totalCapacityCount);
   };
 
-  const workerOverviews = workerList.map((worker) => (
-    <tr key={worker.id}>
-      <td>{worker.pcname}</td>
-      <td>{worker.capacity}</td>
-    </tr>
-  ));
-
   return (
-    <>
-      <div id="sideBar" style={sideBarStyle}>
-        <table className="table-responsive">
-          <thead>
-            <th>Total nodes</th>
-            <th>Serving capacity</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{totalNode}</td>
-              <td>{totalCapacity}</td>
-            </tr>
-            {workerOverviews}
-          </tbody>
-        </table>
+    <div className="bg-blue-500 text-white p-4">
+      <div className="text-center mb-4">
+        <h2 className="text-lg font-bold">Total nodes and serving capacity</h2>
+        <div className="flex justify-center mt-2">
+          <div className="p-2 bg-blue-700 rounded-md">
+            <p className="text-2xl font-bold">{totalNode}</p>
+            <p>Total nodes</p>
+          </div>
+          <div className="p-2 bg-blue-700 rounded-md ml-4">
+            <p className="text-2xl font-bold">{totalCapacity}</p>
+            <p>Serving capacity</p>
+          </div>
+        </div>
       </div>
-    </>
+      <div>
+        <h2 className="text-lg font-bold mb-2">Worker List</h2>
+        <ul>
+          {workerList.map((worker) => (
+            <li key={worker.id} className="mb-2">
+              <DropDown worker={worker} changeToLocation={changeToLocation} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 

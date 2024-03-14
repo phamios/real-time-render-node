@@ -1,9 +1,11 @@
 import L from "leaflet";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Map, TileLayer, ZoomControl } from "react-leaflet";
 import MarkerCluster from "./Cluster";
+import WorkerList from "../data/WorkerList.json";
+import "./map.css";
 
-const position = [51.505, -0.09];
+var position = [51.505, -0.09];
 const mapStyle = { height: "90vh" };
 // var Map = L.map('map');
 // var map = L.map("map", {
@@ -18,32 +20,52 @@ const mapStyle = { height: "90vh" };
 //   })
 //   .addTo(map);
 
-const Leaflet = () => {
+const Leaflet = ({ new_lng = null, new_lat = null }) => {
+  const [workerList, setWorkerList] = useState([]);
+  useEffect(() => {
+    // Function to load data from JSON
+    const loadData = () => JSON.parse(JSON.stringify(WorkerList));
+
+    // Load data and set worker list
+    const Data = loadData();
+    setWorkerList(Data);
+    console.log(Data);
+  }, []);
+
   let markers;
 
-  // Add random markers to map
   const addMarkers = () => {
     markers = [];
-    for (let i = 0; i < 100; i++) {
+    workerList.forEach((worker) =>
       markers.push({
         position: {
-          lng: -122.0 + Math.random() * 200.0,
-          lat: 45.5 - 60 + Math.random() * 80.0,
+          lng: worker.longitude,
+          lat: worker.latitude,
         },
-      });
-    }
+      })
+    );
   };
   addMarkers();
+  var zoom = 3;
+
+  if (new_lng !== null && new_lat !== null) {
+    position = [new_lat, new_lng];
+    zoom = 9;
+    // alert(`lng: ${new_lng}, lat: ${new_lat}`);
+  }
+
+  // alert(new_lat);
 
   return (
-    <div>
+    <div id="map">
       <Map
         center={position}
-        zoom={3}
+        zoom={zoom}
         style={mapStyle}
         maxZoom={20}
         zoomControl={false}
       >
+        {/* {alert(`${position}`)} */}
         <TileLayer
           url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
