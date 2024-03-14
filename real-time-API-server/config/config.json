@@ -1,24 +1,24 @@
 {
     "development": {
       "username": "root",
-      "password": "123456",
-      "database": "nodejs",
-      "host": "mysql",
+      "password": "passroot",
+      "database": "render_db",
+      "host": "127.0.0.1",
       "dialect": "mysql",
       "port": "3306"
     },
     "test": {
       "username": "root",
-      "password": null,
-      "database": "database_test",
+      "password": "passroot",
+      "database": "render_db",
       "host": "127.0.0.1",
       "dialect": "mysql",
       "port": "3307"
     },
     "production": {
       "username": "root",
-      "password": null,
-      "database": "database_production",
+      "password": "passroot",
+      "database": "render_db",
       "host": "127.0.0.1",
       "dialect": "mysql",
        "port": "3307"
