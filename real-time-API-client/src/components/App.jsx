@@ -20,17 +20,17 @@ export default function App() {
   return (
     <React.StrictMode>
       <Router>
-      <Navbar className={"navbar"} />
-      
-      <div className="app">
-        <div className="main-content">
-          <SideBar className="sidebar" changeToLocation={changeToLocation} />
-          {lng !== null && lat !== null && (
-            <Leaflet className={"leaflet"} new_lng={lng} new_lat={lat} />
+        <Navbar className={"navbar"} />
+
+        <div className="app">
+          <div className="main-content">
+            <SideBar className="sidebar" changeToLocation={changeToLocation} />
+            {lng !== null && lat !== null && (
+              <Leaflet className={"leaflet"} new_lng={lng} new_lat={lat} />
             )}
-          <Leaflet className={"leaflet"} />
+            <Leaflet className={"leaflet"} />
+          </div>
         </div>
-      </div>
       </Router>
     </React.StrictMode>
   );

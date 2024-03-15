@@ -1,14 +1,29 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import WorkerOverview from "./WorkerOverview";
 import WorkerDetail from "./WorkerDetail";
+import NavBarWorkerDetail from "./NavBarWorkerDetail";
+import TaskLog from "./TaskLog";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function DropDown({ worker, changeToLocation }) {
+  const [showWorkerDetail, setShowWorkerDetail] = useState(true);
+  const [showTaskLog, setShowTaskLog] = useState(false);
+
+  const handleWorkerDetailClick = () => {
+    setShowWorkerDetail(true);
+    setShowTaskLog(false);
+  };
+
+  const handleTaskLogClick = () => {
+    setShowWorkerDetail(false);
+    setShowTaskLog(true);
+  };
+
   return (
     <Menu
       as="div"
@@ -35,20 +50,42 @@ export default function DropDown({ worker, changeToLocation }) {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <NavBarWorkerDetail
+            handleWorkerDetailClick={handleWorkerDetailClick}
+            handleTaskLogClick={handleTaskLogClick}
+          />
+
           <div className="py-1 worker-detail">
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  <WorkerDetail workerDetail={worker} />
-                </a>
-              )}
-            </Menu.Item>
+            {showWorkerDetail && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    <WorkerDetail workerDetail={worker} />
+                  </a>
+                )}
+              </Menu.Item>
+            )}
+            {showTaskLog && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    <TaskLog />
+                  </a>
+                )}
+              </Menu.Item>
+            )}
           </div>
         </Menu.Items>
       </Transition>
