@@ -1,6 +1,7 @@
 #map { 
     height: 100vh; 
     margin: 0;
+    background-color: #202020;
   }
   
   .leaflet-layer,
@@ -9,3 +10,7 @@
   .leaflet-control-attribution {
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
   }
+
+  .leaflet-container {
+    background-color:#202020;
+}

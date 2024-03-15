@@ -13,6 +13,7 @@ function classNames(...classes) {
 export default function DropDown({ worker, changeToLocation }) {
   const [showWorkerDetail, setShowWorkerDetail] = useState(true);
   const [showTaskLog, setShowTaskLog] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   const handleWorkerDetailClick = () => {
     setShowWorkerDetail(true);
@@ -24,21 +25,38 @@ export default function DropDown({ worker, changeToLocation }) {
     setShowTaskLog(true);
   };
 
+  function expandDiv(element) {
+    if (!element) {
+      return;
+    }
+    if (element.classList.contains('collapsed')) {
+      element.classList.remove('collapsed');
+      element.classList.add('expanded');
+      setShowContent(true);
+    } else {
+      element.classList.remove('expanded');
+      element.classList.add('collapsed');
+      setShowContent(false);
+    }
+  }
+  
+
   return (
     <Menu
       as="div"
-      className="relative inline-block text-left"
-      onClick={() => changeToLocation(worker.longitude, worker.latitude)}
+      className="relative inline-block text-left collapsed fit-parent no-margin"
+      onClick={(event) => { expandDiv(event.target);changeToLocation(worker.longitude, worker.latitude) }}
     >
-      <div>
-        <Menu.Button className="inline-flex items-center min-w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+      <div className="fit-parent">
+        {/* <Menu.Button className="inline-flex items-center min-w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"> */}
           <WorkerOverview PCname={worker.pcname} capacity={worker.capacity} />
           <ChevronDownIcon
-            className="-mr-1 h-5 w-5 text-gray-400"
+            className="-mr-1 h-5 w-5 text-gray-400 absolute right-0 top-4"
             aria-hidden="true"
           />
-        </Menu.Button>
+        {/* </Menu.Button> */}
       </div>
+
 
       <Transition
         as={Fragment}
