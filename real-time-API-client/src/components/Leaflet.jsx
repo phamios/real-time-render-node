@@ -64,6 +64,7 @@ const Leaflet = ({ new_lng = null, new_lat = null }) => {
         style={mapStyle}
         maxZoom={20}
         zoomControl={false}
+        className="no-margin"
       >
         {/* {alert(`${position}`)} */}
         <TileLayer

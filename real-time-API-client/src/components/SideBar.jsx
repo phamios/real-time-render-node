@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WorkerList from "../data/WorkerList.json";
 import DropDown from "./DropDown";
+import "./SideBar.css"
 
 const SideBar = ({ changeToLocation }) => {
   const [workerList, setWorkerList] = useState([]);
@@ -30,8 +31,8 @@ const SideBar = ({ changeToLocation }) => {
   };
 
   return (
-    <div className="bg-blue-500 text-white p-4">
-      <div className="text-center mb-4">
+    <div className="text-white p-4 sidebar no-margin">
+      <div className="text-center mb-4 total-capacity no-margin">
         <h2 className="text-lg font-bold">Total nodes and serving capacity</h2>
         <div className="flex justify-center mt-2">
           <div className="p-2 bg-blue-700 rounded-md">
@@ -44,11 +45,10 @@ const SideBar = ({ changeToLocation }) => {
           </div>
         </div>
       </div>
-      <div>
-        <h2 className="text-lg font-bold mb-2">Worker List</h2>
-        <ul>
+      <div className="no-margin">
+        <ul className="no-margin" id="worker-list">
           {workerList.map((worker) => (
-            <li key={worker.id} className="mb-2">
+            <li key={worker.id} className="mb-2 worker no-margin">
               <DropDown worker={worker} changeToLocation={changeToLocation} />
             </li>
           ))}

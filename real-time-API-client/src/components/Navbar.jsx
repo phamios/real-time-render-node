@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  Outlet,
+  NavLink,
+} from "react-router-dom";
 
 export default function Navbar() {
   const myFunction = () => {
@@ -11,16 +15,19 @@ export default function Navbar() {
   };
 
   return (
-    <div class="topnav">
-      <a href="/" class="active">
-        InferixExplorer
-      </a>
-      <a href="/workers">Map</a>
-      <a href="/jobs">Jobs</a>
-      <a href="/last-rendered">Last rendered</a>
+    <div className="topnav" id="myTopnav">
       <a href="javascript:void(0)" class="icon" onClick={myFunction}>
         <i class="fa fa-bars"></i>
       </a>
+      <nav>
+        <NavLink to="/" class="active">InferixExplorer</NavLink>
+        <NavLink to="/workers">MAP</NavLink>
+        <NavLink to="/jobs">JOBS</NavLink>
+        <NavLink to="/last-rendered">LAST RENDERED</NavLink>
+      </nav>
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 }

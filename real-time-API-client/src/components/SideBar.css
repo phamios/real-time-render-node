@@ -1,0 +1,30 @@
+.worker-list {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.total-capacity {
+  border: 1px solid #000;
+  padding: 25px
+}
+
+.sidebar {
+  background-color: #293c60;
+  padding: 0;
+  flex-grow: 1;
+  max-height: calc(100vh - 56px);
+}
+
+.worker {
+  border-bottom: 1px solid #000;
+}
+
+.worker li::hover{
+  background-color: green;
+}
+
+#worker-list {
+  overflow-y: scroll !important;
+  scrollbar-width: none;
+  max-height: calc(100vh - 56px - 231px);
+}
