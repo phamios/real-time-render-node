@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
---spacer: 1rem;
+:root {
+  --spacer: 1rem;
 --spacer-xl: 1.5rem;
 --spacer-lg: 1.33rem;
 --spacer-sm: .66rem;
@@ -69,6 +70,7 @@
 --pulseSize: 35px;
 --blue: #2270fc;
 --transparentBlue: rgba(95, 139, 250, 0);
+}
 
 html, body {
   accent-color: var(--color-accent);
@@ -77,7 +79,13 @@ html, body {
   color-scheme: dark;
   font-family: var(--font-family-body);
   font-size: var(--font-size-base);
-  height: 100vh;
+  height: 100vh; /* Ensure the body covers the entire viewport height */
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Prevent scrolling of the entire page */
+}
+
+.container {
+  height: 100vh; /* Ensure the container covers the entire viewport height */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
 }

@@ -1,12 +1,16 @@
-import L from "leaflet";
+// import L from "leaflet";
 import React, { useState, useEffect } from "react";
 import { Map, TileLayer, ZoomControl } from "react-leaflet";
 import MarkerCluster from "./Cluster";
-import WorkerList from "../data/WorkerList.json";
-import "./css/map.css";
+import WorkerList from "../../../data/WorkerList.json";
+import "../../css/Map.css";
 
 var position = [51.505, -0.09];
-const mapStyle = { height: "90vh" };
+const mapStyle = {
+  height: "calc(100vh - 80px)", // Adjust 64px according to your navbar height
+  maxHeight: "calc(100vh - 80px)", // Set a max height as well
+  // overflow: "auto", // Add overflow auto to enable scrolling if necessary
+};
 // var Map = L.map('map');
 // var map = L.map("map", {
 //   maxZoom: 20,
@@ -54,7 +58,7 @@ const Leaflet = ({ new_lng = null, new_lat = null }) => {
 
   if (new_lng !== null && new_lat !== null) {
     position = [new_lat, new_lng];
-    zoom = 9;
+    zoom = 10;
     // alert(`lng: ${new_lng}, lat: ${new_lat}`);
   }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/WorkerDetail.css";
+import "../../css/WorkerNavbar.css";
 
 function activeTab(event) {
   const target = event.target;

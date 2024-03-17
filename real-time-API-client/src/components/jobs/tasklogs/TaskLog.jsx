@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ListTaskLog from "./ListTaskLog";
 // import ListTaskLogDetail from "./ListTaskLogDetail";
-import "./css/ListTaskLog.css";
-import ListTaskLogDetail from "./ListTaskLogDetail";
-import TaskLogList from "../data/TaskLogList.json";
-import TaskLogDetailList from "../data/TaskLogDetail.json";
-
-function removeTheDummyDiv() {
-  var elementToRemove = document.querySelector("div:last-child");
-  if (elementToRemove) {
-    // Remove the element
-    elementToRemove.parentNode.removeChild(elementToRemove);
-  } else {
-    console.log("Element not found.");
-  }
-}
+import "../../css/ListTaskLog.css";
+import ListTaskLogDetail from "../tasklog-detail/ListTaskLogDetail";
+import TaskLogList from "../../../data/TaskLogList.json";
+import TaskLogDetailList from "../../../data/TaskLogDetail.json";
 
 const TaskLog = () => {
   const [taskLog, setTaskLog] = useState([]);

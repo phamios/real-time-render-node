@@ -1,0 +1,49 @@
+.worker-item {
+    flex-direction: column;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+
+.d-flex {
+    display: flex;
+}
+.basic-data {
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+    align-items: center;
+}
+
+.worker-basic-info{
+    flex: 1;
+    flex-direction: column;
+}
+
+.worker-name{
+    color: var(--fff, #fff);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.worker-capability {
+    flex-direction: row;
+    align-items: center;
+}
+
+.capa-text{
+    color: var(--LB, #afcaff);
+    font-size: var(--font-size-base);
+}
+
+.capability{
+    width: 78px;
+    height: 30px;
+    color: var(--LB, #afcaff);
+    border: 1px solid var(--LB, #afcaff);
+    border-radius: 50px;
+    box-sizing: border-box;
+    margin-left: 60px;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+}

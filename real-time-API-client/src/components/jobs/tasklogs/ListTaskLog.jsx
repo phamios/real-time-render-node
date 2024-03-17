@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import TaskLogList from "../data/TaskLogList.json";
-import "./css/ListTaskLog.css";
+import React from "react";
+// import TaskLogList from "../../../data/TaskLogList.json";
+import "../../css/ListTaskLog.css";
 
 const ListTaskLog = ({ taskLog, showDetail }) => {
   // const [taskLog, setTaskLog] = useState([]);

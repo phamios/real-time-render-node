@@ -1,0 +1,64 @@
+.worker-item-header{
+    display: flex;
+    padding: 25px;
+    border-bottom: 1px solid #000;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.nodes {
+    backdrop-filter: blur(2.5px);
+    background-color: #5e89f8;
+    background-image: url(https://dash.inferix.io/assets/node-map.99226d6b.svg);
+}
+
+.worker-header-item {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 220px;
+    height: 165px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.header-item-title {
+    display: flex;
+}
+
+.header-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+.header-item-sub-title {
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.header-item-total{
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.serving-capability {
+    background: #4f58bc;
+    backdrop-filter: blur(2.5px);
+    background-image: url(https://dash.inferix.io/assets/capability-map.9d65911c.svg);
+}
+
+.text-last-hour {
+    color: #fff;
+    font-family: Inter-Light, Helvetica;
+    font-size: 13px;
+    font-weight: 300;
+    height: 45px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    width: 60px;
+}

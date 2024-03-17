@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./css/ListTaskLog.css";
-
-function removeTheDummyDiv() {
-  var elementToRemove = document.querySelector("div:last-child");
-  if (elementToRemove) {
-    // Remove the element
-    elementToRemove.parentNode.removeChild(elementToRemove);
-  } else {
-    console.log("Element not found.");
-  }
-}
+import "../../css/ListTaskLog.css";
+// import "./css/ListTaskLog.css";
 
 const ListTaskLogDetail = ({ task = null, ListTaskLogDetail }) => {
   const [listDetailTaskLog, setListDetailTaskLog] = useState([]);

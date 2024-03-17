@@ -5,9 +5,10 @@ import Navbar from "./Navbar";
 // import SideBar from "./SideBar";
 import "./css/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Main from "./Main";
-import LastImageRender from "./LastImageRender";
-import TaskLog from "./TaskLog";
+import Main from "./workers/Main";
+import LastImageRender from "../components/last-rendered/LastImageRender";
+import TaskLog from "./jobs/tasklogs/TaskLog";
+// import TaskLog from "./TaskLog";
 
 export default function App() {
   // const [lng, setLng] = useState(null);

@@ -1,35 +1,53 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import "./css/Navbar.css";
 
+function activeNav(event) {
+  // Remove the "router-link-active" class from all links first
+  const links = document.querySelectorAll("a.router-link-active");
+  links.forEach((link) => link.classList.remove("router-link-active"));
+
+  // Add the "router-link-active" class to the clicked link
+  event.target.classList.add("router-link-active");
+
+  // Set aria-current="page" for the clicked link
+  event.target.setAttribute("aria-current", "page");
+}
 export default function Navbar() {
-  const toggleMenu = () => {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-  };
-
   return (
-    <div className="topnav" id="myTopnav">
-      <a href="javascript:void(0)" className="icon" onClick={toggleMenu}>
-        <i className="fa fa-bars"></i>
+    <header className="app-header">
+      <a href="/" className="navbar-brand">
+        {/* <!-- <i className="fa fa-bars"></i> --> */}
+        <div className="text-explorer"> KryptonX </div>
       </a>
       <nav>
-        <NavLink exact to="/" activeClassName="active">
-          InferixExplorer
-        </NavLink>
-        <NavLink to="/workers" activeClassName="active">
-          MAP
-        </NavLink>
-        <NavLink to="/jobs" activeClassName="active">
-          JOBS
-        </NavLink>
-        <NavLink to="/last-rendered" activeClassName="active">
-          LAST RENDERED
-        </NavLink>
+        <ul>
+          <li>
+            <a href="/workers" onClick={activeNav}>
+              <div className="border-active"></div>
+              <div className="header-item-content">
+                <span>MAP</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/jobs" onClick={activeNav}>
+              <div className="border-active"></div>
+              <div className="header-item-content">
+                <span>RUNNING JOBS</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/last-rendered" onClick={activeNav}>
+              <div className="border-active"></div>
+              <div className="header-item-content">
+                <span>LAST RENDERED</span>
+              </div>
+            </a>
+          </li>
+        </ul>
       </nav>
-    </div>
+    </header>
   );
 }

@@ -1,10 +1,10 @@
 // import React from "react";
 import React, { useState } from "react";
-import "../index.css";
-import Leaflet from "./Leaflet";
+import "../../index.css";
+import Leaflet from "../workers/map/Leaflet";
 // import Navbar from "./Navbar";
-import SideBar from "./SideBar";
-import "./css/App.css";
+import SideBar from "./sidebar/SideBar";
+import "../css/App.css";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Main = () => {
