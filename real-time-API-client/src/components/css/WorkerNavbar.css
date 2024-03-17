@@ -1,0 +1,35 @@
+/* Adjust navbar-worker */
+.navbar-worker {
+    display: flex;
+    height: 50px;
+    background: #293c60;
+  }
+  
+  /* Rename tab-item to item-tab to match the JSX */
+  .item-tab {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #949daf;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Update active class to match the JSX */
+  .item-tab.active {
+    color: #fff;
+    font-weight: 600;
+    background-color: #344668;
+  }
+  
+  /* Adjust first and last child active styling */
+  .item-tab:first-child.active {
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .item-tab:last-child.active {
+    border-radius: 0 10px 10px 0;
+  }
+  

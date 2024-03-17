@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WorkerList from "../data/WorkerList.json";
 import DropDown from "./DropDown";
-import "./SideBar.css"
+import "./css/SideBar.css";
 
 const SideBar = ({ changeToLocation }) => {
   const [workerList, setWorkerList] = useState([]);
@@ -33,11 +33,13 @@ const SideBar = ({ changeToLocation }) => {
   return (
     <div className="text-white p-4 sidebar no-margin">
       <div className="text-center mb-4 total-capacity no-margin">
-        <h2 className="text-lg font-bold">Total nodes and serving capacity</h2>
+        <h2 className="text-lg font-bold">
+          Total active nodes and serving capacity
+        </h2>
         <div className="flex justify-center mt-2">
           <div className="p-2 bg-blue-700 rounded-md">
             <p className="text-2xl font-bold">{totalNode}</p>
-            <p>Total nodes</p>
+            <p>Total active nodes</p>
           </div>
           <div className="p-2 bg-blue-700 rounded-md ml-4">
             <p className="text-2xl font-bold">{totalCapacity}</p>

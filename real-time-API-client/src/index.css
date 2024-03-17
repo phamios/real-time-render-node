@@ -1,31 +1,83 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.app *{
-  margin: 10px;
-}
 
-.orders-list{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.order{
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 2px;
-  width: 300px;
-}
-
-.title{
-  text-align: center;
-}
+--spacer: 1rem;
+--spacer-xl: 1.5rem;
+--spacer-lg: 1.33rem;
+--spacer-sm: .66rem;
+--spacer-xs: .33rem;
+--color-background: #111;
+--color-background-column: #202020;
+--color-background-column-highlight: #282828;
+--color-accent-hue: 246;
+--color-accent: hsl(var(--color-accent-hue), 40%, 65%);
+--color-accent-text: hsl(var(--color-accent-hue) 100% 84%);
+--color-accent-background: hsl(var(--color-accent-hue) 18% 28%);
+--color-text: #ddd;
+--color-text-highlight: #fff;
+--color-text-muted: #999;
+--color-text-hint: #555;
+--color-border: #282828;
+--color-button: #bbb;
+--color-button-background: #555;
+--border-color: #555;
+--border-btn-radius: 10px;
+--border-radius: 4px;
+--border-width: 2px;
+--font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+--font-family-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+--font-size-base: 14px;
+--font-size-sm: 12px;
+--font-size-lg: 16px;
+--table-color-background-row: #303030;
+--table-color-background-row-odd: #2b2b2b;
+--table-color-background-row-selected: hsl(var(--color-accent-hue), 16%, 30%);
+--table-color-background-row-active: hsl(var(--color-accent-hue), 24%, 36%);
+--table-color-border: var(--color-border);
+--header-height: 80px;
+--footer-height: 30px;
+--grid-gap: 1px;
+--transition-speed: .24s;
+--transition-speed-fast: 60ms;
+--box-shadow-float: 2px 2px 5px rgba(0, 0, 0, .5), 0 5px 25px rgba(0, 0, 0, .5);
+--color-background-popover: var(--color-background-column-highlight);
+--color-danger: hsl(352 100% 56%);
+--color-success: hsl(102 70% 56%);
+--color-status-active: hsl(166 100% 46%);
+--color-status-completed: hsl(166 100% 46%);
+--color-status-archived: hsl(0 0% 25%);
+--color-status-archiving: hsl(0 50% 50%);
+--color-status-construction-failed: hsl(356 100% 59%);
+--color-status-failed: hsl(356 100% 59%);
+--color-status-soft-failed: hsl(356 70% 40%);
+--color-status-queued: hsl(194 100% 46%);
+--color-status-requeueing: hsl(194 100% 46%);
+--color-status-canceled: hsl(0 0% 46%);
+--color-status-paused: hsl(0 0% 66%);
+--color-status-cancel-requested: hsl(194 30% 50%);
+--color-status-under-construction: hsl(194 30% 50%);
+--color-worker-status-starting: hsl(68, 100%, 30%);
+--color-worker-status-awake: var(--color-status-active);
+--color-worker-status-asleep: hsl(208, 80%, 55%);
+--color-worker-status-error: var(--color-status-failed);
+--color-worker-status-shutdown: var(--color-status-paused);
+--color-worker-status-testing: hsl(166 100% 46%);
+--color-worker-status-offline: var(--color-status-canceled);
+--color-connection-lost-text: hsl(0, 90%, 60%);
+--color-connection-lost-bg: hsl(0, 50%, 20%);
+--pulseSize: 35px;
+--blue: #2270fc;
+--transparentBlue: rgba(95, 139, 250, 0);
 
 html, body {
-  width: 100%;
-  height: 100%;
+  accent-color: var(--color-accent);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  color-scheme: dark;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  height: 100vh;
   margin: 0;
-  overflow: hidden;
+  padding: 0;
 }

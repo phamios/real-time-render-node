@@ -1,32 +1,44 @@
 import React from "react";
+import "./css/WorkerDetail.css";
+
+function activeTab(event) {
+  const target = event.target;
+  const siblings = target.parentNode.children;
+
+  // Loop through siblings to remove "active" class
+  for (let sibling of siblings) {
+    sibling.classList.remove("active");
+  }
+
+  // Add "active" class to the clicked element
+  target.classList.add("active");
+}
 
 const NavBarWorkerDetail = ({
   handleWorkerDetailClick,
   handleTaskLogClick,
 }) => {
   return (
-    <>
-      <ul className="flex">
-        <li className="flex-1 mr-2">
-          <a
-            className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
-            href="#"
-            onClick={() => handleWorkerDetailClick()}
-          >
-            Capability
-          </a>
-        </li>
-        <li className="flex-1 mr-2">
-          <a
-            className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-            href="#"
-            onClick={() => handleTaskLogClick()}
-          >
-            Task logs
-          </a>
-        </li>
-      </ul>
-    </>
+    <div className="navbar-worker">
+      <div
+        className="item-tab"
+        onClick={(event) => {
+          handleWorkerDetailClick();
+          activeTab(event);
+        }}
+      >
+        Capability
+      </div>
+      <div
+        className="item-tab"
+        onClick={(event) => {
+          handleTaskLogClick();
+          activeTab(event);
+        }}
+      >
+        Task logs
+      </div>
+    </div>
   );
 };
 

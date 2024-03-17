@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Map, TileLayer, ZoomControl } from "react-leaflet";
 import MarkerCluster from "./Cluster";
 import WorkerList from "../data/WorkerList.json";
-import "./map.css";
+import "./css/map.css";
 
 var position = [51.505, -0.09];
 const mapStyle = { height: "90vh" };
@@ -33,17 +33,21 @@ const Leaflet = ({ new_lng = null, new_lat = null }) => {
   }, []);
 
   let markers;
+  // var i = 1;
 
   const addMarkers = () => {
     markers = [];
-    workerList.forEach((worker) =>
-      markers.push({
-        position: {
-          lng: worker.longitude,
-          lat: worker.latitude,
-        },
-      })
-    );
+    workerList.forEach((worker) => {
+      if (worker.status === "Active") {
+        // console.log(i++);
+        markers.push({
+          position: {
+            lng: worker.longitude,
+            lat: worker.latitude,
+          },
+        });
+      }
+    });
   };
   addMarkers();
   var zoom = 3;
